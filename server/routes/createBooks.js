@@ -7,7 +7,7 @@ const {format} = require('date-fns');
 const curd = new Date();
 const today = format(curd, 'yyyy-MM-dd');
 
-router.post('/addbook', async() => {
+router.post('/addBook', async(req,res) => {
     try {
         const newBook = new Book({
             book_name : req.body.book_name,
