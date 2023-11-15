@@ -18,8 +18,17 @@ router.post('/addBook', async(req,res) => {
         const saveBook = await newBook.save();
         res.json(saveBook);
     } catch (error) {
-        console.log(error);
+        res.status(500).json({'error': error});
     }
 });
+
+router.get('/viewBook', async(req, res) => {
+    try {
+        const books = await Book.find();
+        res.status(200).json(books);
+    } catch (error) {
+        res.status(500).json({'error': error});
+    }
+})
 
 module.exports = router;
